@@ -3,10 +3,10 @@ import React from "react";
 import FooterTop from '../FooterTop';
 import FooterBottom from '../FooterBottom';
 
-const Footer = (props) => {
+const Footer = ({eightRandomElements}) => {
   return (
     <footer id="footer">
-      <FooterTop />
+      <FooterTop eightRandomElements={eightRandomElements} />
 
       <FooterBottom />
     </footer>

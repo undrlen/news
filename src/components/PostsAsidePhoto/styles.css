@@ -3,3 +3,7 @@
   height: 100%;
   width: auto;
 }
+
+.galery-widget ul li {
+  margin-right: -2px;
+}

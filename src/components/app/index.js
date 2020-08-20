@@ -30,7 +30,8 @@ export default class App extends Component {
     postsOneMainArticles: null,
     owlGeneral: null,
     owlMainAside: null,
-    eightRandomElements: null,
+    eightRandomElementsForFooter: null,
+    eightRandomElementsForAside: null,
   };
 
   findPhoto = (state) => {
@@ -72,16 +73,20 @@ export default class App extends Component {
     const owlGeneral = uniquePosts.slice(0, 3);
     const owlMainAside = uniquePosts.slice(3, 5);
 
-    const eightRandomElements = new Set();
+    const eightRandomElementsForAside = new Set();
+    const eightRandomElementsForFooter = new Set();
     for (let i = 0; i < uniquePosts.length; i++) {
-      if (eightRandomElements.size === 8) break;
-      eightRandomElements.add(
+      if (eightRandomElementsForAside.size < 8) eightRandomElementsForAside.add(
+        uniquePosts[Math.floor(Math.random() * uniquePosts.length)]
+      );
+      if (eightRandomElementsForFooter.size < 8) eightRandomElementsForFooter.add(
         uniquePosts[Math.floor(Math.random() * uniquePosts.length)]
       );
     }
 
     return {
-      eightRandomElements: Array.from(eightRandomElements),
+      eightRandomElementsForAside: Array.from(eightRandomElementsForAside),
+      eightRandomElementsForFooter: Array.from(eightRandomElementsForFooter),
       owlGeneral,
       owlMainAside,
     };
@@ -190,7 +195,8 @@ export default class App extends Component {
       postsOneMainArticles,
       owlMainAside,
       owlGeneral,
-      eightRandomElements,
+      eightRandomElementsForAside,
+      eightRandomElementsForFooter,
     } = this.state;
 
     if (isError) {
@@ -224,10 +230,10 @@ export default class App extends Component {
             postsMainArticles={postsOneMainArticles}
             loadPage={this.loadPage}
             country={country}
-            eightRandomElements={eightRandomElements}
+            eightRandomElements={eightRandomElementsForAside}
           />
 
-          <Footer />
+          <Footer eightRandomElements={eightRandomElementsForFooter} />
 
           <div id="back-to-top"></div>
         </div>

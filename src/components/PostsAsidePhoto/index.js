@@ -25,14 +25,10 @@ export default class PostsAsidePhoto extends Component {
   findImageHeight = () => ({ height: (100 * this.divRef.current.clientWidth) / 4 / 100 });
 
   componentDidMount() {
-    console.log('did mount');
-    console.log(this.props.eightRandomElements);
     window.addEventListener("resize", this.resize);
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('did update');
-    console.log(this.props.eightRandomElements);
     if (prevProps.eightRandomElements !== this.props.eightRandomElements) {
       this.setState(this.findImageHeight());
     }

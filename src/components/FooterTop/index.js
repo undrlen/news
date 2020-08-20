@@ -2,7 +2,7 @@ import React from "react";
 
 import PostsAsidePhoto from "../PostsAsidePhoto";
 
-const FooterTop = (props) => {
+const FooterTop = ({eightRandomElements}) => {
   return (
     <div id="top-footer" className="section">
       <div className="container">
@@ -146,7 +146,7 @@ const FooterTop = (props) => {
           </div>
 
           <div className="col-md-4">
-            <PostsAsidePhoto />
+            <PostsAsidePhoto eightRandomElements={eightRandomElements} />
 
             <div className="footer-widget tweets-widget">
               <div className="widget-title">

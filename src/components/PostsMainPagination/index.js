@@ -8,7 +8,7 @@ class PostsMainPagination extends Component {
 
   state = {
     active: 0,
-    country: this.services.country,
+    country: null,
   };
 
   loadItem = (i) => {

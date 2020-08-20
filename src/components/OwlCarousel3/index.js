@@ -1,11 +1,8 @@
 import React, {Component} from "react";
 
 import $ from "jquery";
-import "owl.carousel";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
 
-export default class OwlCarousel2 extends Component {
+export default class OwlCarousel3 extends Component {
   state = {
     height: null,
   };
@@ -15,14 +12,14 @@ export default class OwlCarousel2 extends Component {
   resize = (e) => {
     if (!this.scheduled) {
       setTimeout(() => {
-        this.setState({ height: 270 * this.$el[0].clientWidth / 360 });
+        this.setState({ height: 270 * this.el.clientWidth / 360 });
         this.scheduled = null;
       }, 250);
     }
     this.scheduled = e;
   };
 
-  findImageHeight = () => ({ height: 270 * this.$el[0].clientWidth / 360 });
+  findImageHeight = () => ({ height: 270 * this.el.clientWidth / 360 });
 
   dateFormat(publishedAt) {
     const months = [
@@ -78,7 +75,6 @@ export default class OwlCarousel2 extends Component {
 
     const height = {style: { height: `${this.state.height}px` }};
     const { owlMainAside } = this.props;
-    console.log(owlMainAside)
 
     if (owlMainAside) {
       var url0 = owlMainAside[0].url;
@@ -97,7 +93,7 @@ export default class OwlCarousel2 extends Component {
       <div id="owl-carousel-3" className="owl-carousel owl-theme center-owl-nav" ref={(el) => (this.el = el)}>
         <article className="article">
           <div className="article-img">
-            <a href={url0}>
+            <a target="_blank" rel="noopener noreferrer" href={url0}>
               <img src={urlImage0} alt={description0} {...height} />
             </a>
             <ul className="article-info">
@@ -105,7 +101,7 @@ export default class OwlCarousel2 extends Component {
             </ul>
           </div>
           <div className="article-body">
-            <h4 className="article-title"><a href={url0}>{title0}</a></h4>
+            <h4 className="article-title"><a target="_blank" rel="noopener noreferrer" href={url0}>{title0}</a></h4>
             <ul className="article-meta">
               <li><i className="fa fa-clock-o"></i> {date0}</li>
               <li><i className="fa fa-comments"></i> 1</li>
@@ -114,7 +110,7 @@ export default class OwlCarousel2 extends Component {
         </article>
         <article className="article">
           <div className="article-img">
-            <a href={url1}>
+            <a target="_blank" rel="noopener noreferrer" href={url1}>
               <img src={urlImage1} alt={description1} {...height} />
             </a>
             <ul className="article-info">
@@ -122,7 +118,7 @@ export default class OwlCarousel2 extends Component {
             </ul>
           </div>
           <div className="article-body">
-            <h4 className="article-title"><a href={url1}>{title1}</a></h4>
+            <h4 className="article-title"><a target="_blank" rel="noopener noreferrer" href={url1}>{title1}</a></h4>
             <ul className="article-meta">
               <li><i className="fa fa-clock-o"></i> {date1}</li>
               <li><i className="fa fa-comments"></i> 33</li>

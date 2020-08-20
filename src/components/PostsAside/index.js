@@ -1,10 +1,10 @@
 import React from "react";
 
-import PostsAsideOwl from '../PostsAsideOwl';
+import OwlCarousel4 from '../OwlCarousel4';
 import PostsAsidePhoto from '../PostsAsidePhoto';
 import PostsAsideTweets from '../PostsAsideTweets';
 
-const PostsAside = (props) => {
+const PostsAside = ({country, eightRandomElements}) => {
   return (
     <div className="col-md-4">
       <div className="widget">
@@ -12,10 +12,10 @@ const PostsAside = (props) => {
           <h2 className="title">Featured Posts</h2>
         </div>
 
-        <PostsAsideOwl />
+        <OwlCarousel4 country={country} />
       </div>
 
-      <PostsAsidePhoto />
+      <PostsAsidePhoto eightRandomElements={eightRandomElements} />
 
       <PostsAsideTweets />
     </div>

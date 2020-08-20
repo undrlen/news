@@ -1,9 +1,6 @@
 import React, {Component} from "react";
 
 import $ from "jquery";
-import "owl.carousel";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
 
 export default class OwlCarousel1 extends Component {
   state = {
@@ -15,14 +12,14 @@ export default class OwlCarousel1 extends Component {
   resize = (e) => {
     if (!this.scheduled) {
       setTimeout(() => {
-        this.setState({ height: 768 * this.$el[0].clientWidth / 2 / 1280 });
+        this.setState({ height: 768 * this.el.clientWidth / 2 / 1280 });
         this.scheduled = null;
       }, 250);
     }
     this.scheduled = e;
   };
 
-  findImageHeight = () => ({ height: 768 * this.$el[0].clientWidth / 2 / 1280 });
+  findImageHeight = () => ({ height: 768 * this.el.clientWidth / 2 / 1280 });
 
   dateFormat(publishedAt) {
     const months = [

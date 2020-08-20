@@ -10,6 +10,9 @@ import Footer from "../Footer";
 import ServerError from "../ServerError";
 import DateFormatContext from "../../contexts/DateFormatContext";
 import NewsApi from "../../services/NewsApi";
+import "owl.carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
 
 export default class App extends Component {
   services = new NewsApi();
@@ -27,19 +30,18 @@ export default class App extends Component {
     postsOneMainArticles: null,
     owlGeneral: null,
     owlMainAside: null,
+    eightRandomElements: null,
   };
-
-  divRef = React.createRef();
 
   findPhoto = (state) => {
     function compareNumbers(a, b) {
       return b.naturalWidth - a.naturalWidth;
     }
 
-    let images = this.divRef.current.getElementsByTagName("img");
-    let imgs = [...images].sort(compareNumbers);
+    const images = document.images;
+    const imgs = [...images].sort(compareNumbers);
 
-    let clearImgs = imgs
+    const clearImgs = imgs
       .filter((img) => img.src !== "")
       .filter((img) => !img.src.includes("localhost"))
       .filter((img) => !img.src.includes("picsum"));
@@ -52,7 +54,8 @@ export default class App extends Component {
       ...state.mainArticlesBottom,
       ...state.mainAsideMostReadArticle,
     ];
-    let owlAll = [];
+
+    const owlAll = [];
     for (let img of clearImgs) {
       for (let itemPost of posts) {
         if (itemPost.urlToImage === img.src) {
@@ -60,6 +63,7 @@ export default class App extends Component {
         }
       }
     }
+
     const uniquePosts = owlAll.reduce(
       (unique, item) =>
         unique.some((el) => el === item) ? unique : [...unique, item],
@@ -68,9 +72,18 @@ export default class App extends Component {
     const owlGeneral = uniquePosts.slice(0, 3);
     const owlMainAside = uniquePosts.slice(3, 5);
 
+    const eightRandomElements = new Set();
+    for (let i = 0; i < uniquePosts.length; i++) {
+      if (eightRandomElements.size === 8) break;
+      eightRandomElements.add(
+        uniquePosts[Math.floor(Math.random() * uniquePosts.length)]
+      );
+    }
+
     return {
-      owlGeneral: owlGeneral,
-      owlMainAside: owlMainAside,
+      eightRandomElements: Array.from(eightRandomElements),
+      owlGeneral,
+      owlMainAside,
     };
   };
 
@@ -114,11 +127,9 @@ export default class App extends Component {
         postsAllMainArticles,
         postsOneMainArticles,
       });
-
-    } catch(e) {
-      this.setState({isError: true});
+    } catch (e) {
+      this.setState({ isError: true });
     }
-
   };
 
   loadPage = (i) => {
@@ -158,7 +169,8 @@ export default class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (
       (prevState.postsAllMainArticles !== this.state.postsAllMainArticles &&
-        !prevState.owlGeneral && !this.state.isError) ||
+        !prevState.owlGeneral &&
+        !this.state.isError) ||
       (prevState.owlGeneral === this.state.owlGeneral && !this.state.isError)
     ) {
       // this.findPhoto();
@@ -178,14 +190,15 @@ export default class App extends Component {
       postsOneMainArticles,
       owlMainAside,
       owlGeneral,
+      eightRandomElements,
     } = this.state;
-console.log(owlMainAside)
+
     if (isError) {
       return <ServerError />;
     }
     return (
       <DateFormatContext.Provider value={this.dateFormat}>
-        <div ref={this.divRef}>
+        <div>
           <Header onChangeHeaderNav={this.onChangeHeaderNav} />
 
           <OwlCarousel1 owlGeneral={owlGeneral} />
@@ -205,12 +218,13 @@ console.log(owlMainAside)
             <img className="center-block" src="" alt="" />
           </div>
 
-          <Video />
+          <Video country={country} />
 
           <Posts
             postsMainArticles={postsOneMainArticles}
             loadPage={this.loadPage}
             country={country}
+            eightRandomElements={eightRandomElements}
           />
 
           <Footer />

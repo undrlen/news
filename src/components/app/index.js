@@ -70,6 +70,7 @@ export default class App extends Component {
         unique.some((el) => el === item) ? unique : [...unique, item],
       []
     );
+
     const owlGeneral = uniquePosts.slice(0, 3);
     const owlMainAside = uniquePosts.slice(3, 5);
 
@@ -83,7 +84,6 @@ export default class App extends Component {
         uniquePosts[Math.floor(Math.random() * uniquePosts.length)]
       );
     }
-
     return {
       eightRandomElementsForAside: Array.from(eightRandomElementsForAside),
       eightRandomElementsForFooter: Array.from(eightRandomElementsForFooter),
@@ -110,7 +110,6 @@ export default class App extends Component {
       const mainArticlesRight = all[0].value[1] ? all[0].value[1] : null;
       const mainArticlesCenter = all[0].value[2] ? all[0].value[2] : null;
       const mainArticlesBottom = all[1].value ? all[1].value : null;
-      // const popular = all[2].value ? all[2].value : null;
       const mainAsideMostReadArticle = all[2].value.slice(0, 3)
         ? all[2].value.slice(0, 3)
         : null;
@@ -178,7 +177,6 @@ export default class App extends Component {
         !this.state.isError) ||
       (prevState.owlGeneral === this.state.owlGeneral && !this.state.isError)
     ) {
-      // this.findPhoto();
       this.setState((state) => this.findPhoto(state));
     }
   }
@@ -233,7 +231,7 @@ export default class App extends Component {
             eightRandomElements={eightRandomElementsForAside}
           />
 
-          <Footer eightRandomElements={eightRandomElementsForFooter} />
+          <Footer eightRandomElements={eightRandomElementsForFooter} footerFeaturedPosts={owlGeneral} />
 
           <div id="back-to-top"></div>
         </div>

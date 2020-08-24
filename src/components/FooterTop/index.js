@@ -1,8 +1,9 @@
 import React from "react";
 
 import PostsAsidePhoto from "../PostsAsidePhoto";
+import FooterTopFeaturedPosts from "../FooterTopFeaturedPosts";
 
-const FooterTop = ({eightRandomElements}) => {
+const FooterTop = ({ eightRandomElements, footerFeaturedPosts }) => {
   return (
     <div id="top-footer" className="section">
       <div className="container">
@@ -74,76 +75,7 @@ const FooterTop = ({eightRandomElements}) => {
             </div>
           </div>
 
-          <div className="col-md-4">
-            <div className="footer-widget">
-              <div className="widget-title">
-                <h2 className="title">Featured Posts</h2>
-              </div>
-
-              <article className="article widget-article">
-                <div className="article-img">
-                  <a href="#0">
-                    <img src="./img/img-widget-1.jpg" alt="" />
-                  </a>
-                </div>
-                <div className="article-body">
-                  <h4 className="article-title">
-                    <a href="#0">Duis urbanitas eam in, tempor consequat.</a>
-                  </h4>
-                  <ul className="article-meta">
-                    <li>
-                      <i className="fa fa-clock-o"></i> January 31, 2017
-                    </li>
-                    <li>
-                      <i className="fa fa-comments"></i> 33
-                    </li>
-                  </ul>
-                </div>
-              </article>
-
-              <article className="article widget-article">
-                <div className="article-img">
-                  <a href="#0">
-                    <img src="./img/img-widget-2.jpg" alt="" />
-                  </a>
-                </div>
-                <div className="article-body">
-                  <h4 className="article-title">
-                    <a href="#0">Duis urbanitas eam in, tempor consequat.</a>
-                  </h4>
-                  <ul className="article-meta">
-                    <li>
-                      <i className="fa fa-clock-o"></i> January 31, 2017
-                    </li>
-                    <li>
-                      <i className="fa fa-comments"></i> 33
-                    </li>
-                  </ul>
-                </div>
-              </article>
-
-              <article className="article widget-article">
-                <div className="article-img">
-                  <a href="#0">
-                    <img src="./img/img-widget-3.jpg" alt="" />
-                  </a>
-                </div>
-                <div className="article-body">
-                  <h4 className="article-title">
-                    <a href="#0">Duis urbanitas eam in, tempor consequat.</a>
-                  </h4>
-                  <ul className="article-meta">
-                    <li>
-                      <i className="fa fa-clock-o"></i> January 31, 2017
-                    </li>
-                    <li>
-                      <i className="fa fa-comments"></i> 33
-                    </li>
-                  </ul>
-                </div>
-              </article>
-            </div>
-          </div>
+          <FooterTopFeaturedPosts footerFeaturedPosts={footerFeaturedPosts} />
 
           <div className="col-md-4">
             <PostsAsidePhoto eightRandomElements={eightRandomElements} />

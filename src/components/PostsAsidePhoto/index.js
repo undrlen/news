@@ -15,14 +15,14 @@ export default class PostsAsidePhoto extends Component {
   resize = (e) => {
     if (!this.scheduled) {
       setTimeout(() => {
-        this.setState({ height: (100 * this.divRef.current.clientWidth) / 4 / 100 });
+        this.setState({ height: (100 * this.divRef.current.clientWidth) / 4 / 100 - 6 });
         this.scheduled = null;
       }, 250);
     }
     this.scheduled = e;
   };
 
-  findImageHeight = () => ({ height: (100 * this.divRef.current.clientWidth) / 4 / 100 });
+  findImageHeight = () => ({ height: (100 * this.divRef.current.clientWidth) / 4 / 100 - 6 });
 
   componentDidMount() {
     window.addEventListener("resize", this.resize);

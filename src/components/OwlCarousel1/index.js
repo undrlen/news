@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 
 import $ from "jquery";
+import "./styles.css";
 
 export default class OwlCarousel1 extends Component {
   state = {

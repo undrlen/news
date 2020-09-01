@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 
 import $ from "jquery";
+import "./styles.css";
 
 export default class OwlCarousel3 extends Component {
   state = {
@@ -93,8 +94,8 @@ export default class OwlCarousel3 extends Component {
       <div id="owl-carousel-3" className="owl-carousel owl-theme center-owl-nav" ref={(el) => (this.el = el)}>
         <article className="article">
           <div className="article-img">
-            <a target="_blank" rel="noopener noreferrer" href={url0}>
-              <img src={urlImage0} alt={description0} {...height} />
+            <a target="_blank" rel="noopener noreferrer" href={url0} {...height}>
+              <img src={urlImage0} alt={description0} />
             </a>
             <ul className="article-info">
               <li className="article-type"><i className="fa fa-file-text"></i></li>
@@ -110,8 +111,8 @@ export default class OwlCarousel3 extends Component {
         </article>
         <article className="article">
           <div className="article-img">
-            <a target="_blank" rel="noopener noreferrer" href={url1}>
-              <img src={urlImage1} alt={description1} {...height} />
+            <a target="_blank" rel="noopener noreferrer" href={url1} {...height}>
+              <img src={urlImage1} alt={description1} />
             </a>
             <ul className="article-info">
               <li className="article-type"><i className="fa fa-file-text"></i></li>

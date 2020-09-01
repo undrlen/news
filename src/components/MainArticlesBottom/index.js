@@ -2,6 +2,7 @@ import React from "react";
 
 import DateFormatContext from "../../contexts/DateFormatContext";
 import noPhoto from "../../images/no_image.jpg";
+import "./styles.css";
 
 const MainArticlesBottom = ({ mainArticlesBottom }) => {
   function elements(dateFormat) {

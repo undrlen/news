@@ -1,17 +1,25 @@
 import React from "react";
 
 import DateFormatContext from "../../contexts/DateFormatContext";
-import noPhoto from '../../images/no_image.jpg';
+import noPhoto from "../../images/no_image.jpg";
+import "./styles.css";
 
 const TrendTop = ({ forTrendTop }) => {
-  function elements(forTrendTop, dateFormat) {
+  const elements = (forTrendTop, dateFormat) => {
     return forTrendTop.map((item, i) => {
-      let { title, description, urlToImage, publishedAt, url } = item;
+      let {
+        title,
+        description,
+        urlToImage,
+        publishedAt,
+        url,
+        source: { id },
+      } = item;
       urlToImage = urlToImage ? urlToImage : noPhoto;
       const published = dateFormat(publishedAt);
-
+      const key = (id || i) + Math.floor(Math.random() * 100000);
       return (
-        <div className="col-md-3 col-sm-6" key={i + 1}>
+        <div className="col-md-3 col-sm-6" key={key}>
           <article className="article">
             <div className="article-img">
               <a target="_blank" rel="noopener noreferrer" href={url}>
@@ -25,7 +33,9 @@ const TrendTop = ({ forTrendTop }) => {
             </div>
             <div className="article-body">
               <h4 className="article-title">
-                <a target="_blank" rel="noopener noreferrer" href={url}>{title}</a>
+                <a target="_blank" rel="noopener noreferrer" href={url}>
+                  {title}
+                </a>
               </h4>
               <ul className="article-meta">
                 <li>
@@ -40,14 +50,12 @@ const TrendTop = ({ forTrendTop }) => {
         </div>
       );
     });
-  }
+  };
 
   return (
     <DateFormatContext.Consumer>
       {(dateFormat) => {
-        const itemList = forTrendTop
-          ? elements(forTrendTop, dateFormat)
-          : forTrendTop;
+        const itemList = forTrendTop ? elements(forTrendTop, dateFormat) : null;
         return <div className="row">{itemList}</div>;
       }}
     </DateFormatContext.Consumer>

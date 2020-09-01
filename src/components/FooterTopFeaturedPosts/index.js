@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import DateFormatContext from "../../contexts/DateFormatContext";
+import "./styles.css";
 
 const FooterTopFeaturedPosts = ({ footerFeaturedPosts }) => {
   const dateFormat = useContext(DateFormatContext);
@@ -13,13 +14,13 @@ const FooterTopFeaturedPosts = ({ footerFeaturedPosts }) => {
           return (
             <article className="article widget-article" key={key}>
               <div className="article-img">
-                <a href={url}>
+                <a target="_blank" rel="noopener noreferrer" href={url}>
                   <img src={urlToImage} alt={description} />
                 </a>
               </div>
               <div className="article-body">
                 <h4 className="article-title">
-                  <a href={url}>{title}</a>
+                  <a target="_blank" rel="noopener noreferrer" href={url}>{title}</a>
                 </h4>
                 <ul className="article-meta">
                   <li>

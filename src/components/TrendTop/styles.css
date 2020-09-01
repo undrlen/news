@@ -1,0 +1,26 @@
+
+#tab1 .article .article-img img {
+  height: 100%;
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  #tab1 .article .article-img > a {
+    height: 258px;
+  }
+  #tab1 .article .article-img img {
+    width: auto;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  #tab1 .article .article-img > a {
+    height: 159px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  #tab1 .article .article-img > a {
+    height: 197px;
+  }
+}

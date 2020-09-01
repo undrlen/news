@@ -1,0 +1,25 @@
+#tab1 .widget-article .article-img img {
+  height: 100%;
+  width: auto;
+}
+
+#tab1 .widget-article .article-img a {
+  height: 80px;
+}
+
+
+
+@media only screen and (min-width: 768px) {
+  #tab1 .col-md-4.col-sm-6:nth-child(3) {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  #tab1 .col-md-4.col-sm-6:nth-child(3) {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+}

@@ -1,0 +1,25 @@
+.col-md-6 .article .article-img img {
+  height: 100%;
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .col-md-6 .article .article-img > a {
+    height: 194px;
+  }
+  .col-md-6 .article .article-img img {
+    width: auto;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .col-md-6 .article .article-img > a {
+    height: 165px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .col-md-6 .article .article-img > a {
+    height: 202px;
+  }
+}

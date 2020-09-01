@@ -1,0 +1,8 @@
+#footer .widget-article .article-img img {
+  height: 100%;
+  width: auto;
+}
+
+#footer .widget-article .article-img a {
+  height: 80px;
+}

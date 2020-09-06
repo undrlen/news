@@ -2,6 +2,7 @@ import React from "react";
 
 import DateFormatContext from "../../contexts/DateFormatContext";
 import noPhoto from "../../images/no_image.jpg";
+import "./styles.css";
 
 const PostsMainArticles = ({ postsMainArticles }) => {
   function elements(dateFormat) {
@@ -12,7 +13,7 @@ const PostsMainArticles = ({ postsMainArticles }) => {
       <article className="article row-article" key={i + 1}>
         <div className="article-img">
           <a target="_blank" rel="noopener noreferrer" href={url}>
-            <img src={urlToImage} alt={description} />
+              <img src={urlToImage} alt={description} onError={(e) => { e.target.src = noPhoto }} />
           </a>
         </div>
         <div className="article-body">

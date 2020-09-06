@@ -23,7 +23,7 @@ const TrendTop = ({ forTrendTop }) => {
           <article className="article">
             <div className="article-img">
               <a target="_blank" rel="noopener noreferrer" href={url}>
-                <img src={urlToImage} alt={description} />
+                <img src={urlToImage} alt={description} onError={(e) => { e.target.src = noPhoto }} />
               </a>
               <ul className="article-info">
                 <li className="article-type">

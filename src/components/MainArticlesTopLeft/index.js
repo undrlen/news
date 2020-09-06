@@ -14,7 +14,7 @@ const MainArticlesTopLeft = ({ mainArticlesLeft }) => {
       <article className="article">
         <div className="article-img">
           <a target="_blank" rel="noopener noreferrer" href={url}>
-            <img src={urlToImage} alt={description} />
+            <img src={urlToImage} alt={description} onError={(e) => { e.target.src = noPhoto }} />
           </a>
           <ul className="article-info">
             <li className="article-type">
@@ -48,7 +48,7 @@ const MainArticlesTopLeft = ({ mainArticlesLeft }) => {
         <article className="article widget-article" key={i + 1}>
           <div className="article-img">
             <a target="_blank" rel="noopener noreferrer" href={url}>
-              <img src={urlToImage} alt={description} />
+              <img src={urlToImage} alt={description} onError={(e) => { e.target.src = noPhoto }} />
             </a>
           </div>
           <div className="article-body">

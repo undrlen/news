@@ -1,0 +1,29 @@
+.col-md-8 .article.row-article .article-img img {
+  width: auto;
+  height: 100%;
+}
+
+.col-md-8 .article.row-article .article-img > a {
+  height: 135px;
+}
+
+@media only screen and (min-width: 768px) {
+  .col-md-8 .article.row-article .article-img > a {
+    height: 270px;
+  }
+  /* .col-md-8 .article.row-article .article-img img {
+    width: auto;
+  } */
+}
+
+@media only screen and (min-width: 992px) {
+  .col-md-8 .article.row-article .article-img > a {
+    height: 231px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .col-md-8 .article.row-article .article-img > a {
+    height: 281px;
+  }
+}

@@ -32,6 +32,7 @@ export default class App extends Component {
     owlMainAside: null,
     eightRandomElementsForFooter: null,
     eightRandomElementsForAside: null,
+    dataForComparison: null,
   };
 
   findPhoto = (state) => {
@@ -106,15 +107,22 @@ export default class App extends Component {
         this.services.getMainBottom(language),
         this.services.getPopular(language),
       ]);
-      const mainArticlesLeft = all[0].value[0] ? all[0].value[0] : null;
-      const mainArticlesRight = all[0].value[1] ? all[0].value[1] : null;
-      const mainArticlesCenter = all[0].value[2] ? all[0].value[2] : null;
-      const mainArticlesBottom = all[1].value ? all[1].value : null;
-      const mainAsideMostReadArticle = all[2].value.slice(0, 3)
-        ? all[2].value.slice(0, 3)
+      
+      const getMain = all[0].value.map(([str, arr]) => [str, arr.filter((el) => el.urlToImage).slice(0, 3)]);
+      const getMainArray = [...getMain[0][1], ...getMain[1][1], ...getMain[2][1]];
+      const getMainBottom = all[1].value.filter((el) => el.urlToImage).slice(0, 3);
+      const getPopular = all[2].value.filter((el) => el.urlToImage).filter((elem) => !getMainArray.some((element) => elem.url === element.url));
+      const dataForComparison = [...getMainArray, ...getMainBottom, ...getPopular];
+
+      const mainArticlesLeft = getMain[0] ? getMain[0] : null;
+      const mainArticlesRight = getMain[1] ? getMain[1] : null;
+      const mainArticlesCenter = getMain[2] ? getMain[2] : null;
+      const mainArticlesBottom = getMainBottom ? getMainBottom : null;
+      const mainAsideMostReadArticle = getPopular.slice(0, 3)
+        ? getPopular.slice(0, 3)
         : null;
-      const postsAllMainArticles = all[2].value.slice(3)
-        ? all[2].value.slice(3)
+      const postsAllMainArticles = getPopular.slice(3)
+        ? getPopular.slice(3)
         : null;
       const postsOneMainArticles = postsAllMainArticles.slice(0, 4)
         ? postsAllMainArticles.slice(0, 4)
@@ -130,9 +138,11 @@ export default class App extends Component {
         mainAsideMostReadArticle,
         postsAllMainArticles,
         postsOneMainArticles,
+        dataForComparison
       });
     } catch (e) {
       this.setState({ isError: true });
+      // console.log(e.message);
     }
   };
 
@@ -195,6 +205,7 @@ export default class App extends Component {
       owlGeneral,
       eightRandomElementsForAside,
       eightRandomElementsForFooter,
+      dataForComparison
     } = this.state;
 
     if (isError) {
@@ -207,7 +218,7 @@ export default class App extends Component {
 
           <OwlCarousel1 owlGeneral={owlGeneral} />
 
-          <Trend country={country} />
+          <Trend country={country} dataForComparison={dataForComparison} />
 
           <Main
             mainArticlesCenter={mainArticlesCenter}

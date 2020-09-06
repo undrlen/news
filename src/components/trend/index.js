@@ -24,12 +24,16 @@ export default class Trend extends Component {
   }
 
   onChangeRequest = (header) => {
-    this.services.getTrends(header, this.props.country).then((trend) => {
-      this.setState({
-        forTrendTop: trend.slice(0, 4),
-        forTrendBottom: trend.slice(4),
+    if (this.props.dataForComparison) {
+      this.services.getTrends(header, this.props.country).then((result) => {
+        const resultsWithPicture = result.filter((el) => el.urlToImage);
+        const trend = resultsWithPicture.filter((element) => !this.props.dataForComparison.some((el) => el.url === element.url)).slice(0, 10);
+        this.setState({
+          forTrendTop: trend.slice(0, 4),
+          forTrendBottom: trend.slice(4),
+        });
       });
-    });
+    }
   };
 
   render() {

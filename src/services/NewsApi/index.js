@@ -58,7 +58,7 @@ export default class NewsApi {
     return await res.json();
   };
 
-  getTrends = async (header = "ALL", country = this.country, pageSize = 10) => {
+  getTrends = async (header = "ALL", country = this.country, pageSize = 20) => {
     let category = this.headersTrend.get(header);
     const trend = await this.getTopResource(category, country, pageSize);
     return await trend.articles;
@@ -76,14 +76,14 @@ export default class NewsApi {
     
     const mainArticles = [];
     for (let [header, ] of randomHeaders) {
-      mainArticles.push([header, await this.getTrends(header, country, 3)]);
+      mainArticles.push([header, await this.getTrends(header, country, 6)]);
     }
 
     return Promise.all(mainArticles);
   };
 
   getMainBottom = async (language = this.language) => {
-    const every = await this.getEverySearchResource(language, 3, "music");
+    const every = await this.getEverySearchResource(language, 6, "politics");
     return await every.articles;
   };
 

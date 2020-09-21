@@ -4,7 +4,7 @@ import OwlCarousel4 from '../OwlCarousel4';
 import PostsAsidePhoto from '../PostsAsidePhoto';
 import PostsAsideTweets from '../PostsAsideTweets';
 
-const PostsAside = ({country, eightRandomElements}) => {
+const PostsAside = ({ country, eightRandomElements, tweets }) => {
   return (
     <div className="col-md-4">
       <div className="widget">
@@ -17,7 +17,7 @@ const PostsAside = ({country, eightRandomElements}) => {
 
       <PostsAsidePhoto eightRandomElements={eightRandomElements} />
 
-      <PostsAsideTweets />
+      <PostsAsideTweets tweets={tweets} />
     </div>
   );
 };

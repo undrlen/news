@@ -2,8 +2,9 @@ import React from "react";
 
 import PostsAsidePhoto from "../PostsAsidePhoto";
 import FooterTopFeaturedPosts from "../FooterTopFeaturedPosts";
+import FooterTweet from "../FooterTweet";
 
-const FooterTop = ({ eightRandomElements, footerFeaturedPosts }) => {
+const FooterTop = ({ eightRandomElements, footerFeaturedPosts, tweets }) => {
   return (
     <div id="top-footer" className="section">
       <div className="container">
@@ -80,23 +81,7 @@ const FooterTop = ({ eightRandomElements, footerFeaturedPosts }) => {
           <div className="col-md-4">
             <PostsAsidePhoto eightRandomElements={eightRandomElements} />
 
-            <div className="footer-widget tweets-widget">
-              <div className="widget-title">
-                <h2 className="title">Recent Tweets</h2>
-              </div>
-              <ul>
-                <li className="tweet">
-                  <i className="fa fa-twitter"></i>
-                  <div className="tweet-body">
-                    <p>
-                      <a href="#0">@magnews</a> Populo tritani laboramus ex mei,
-                      no eum iuvaret ceteros euripidis{" "}
-                      <a href="#0">https://t.co/DwsTbsmxTP</a>
-                    </p>
-                  </div>
-                </li>
-              </ul>
-            </div>
+            <FooterTweet tweets={tweets} />
           </div>
         </div>
       </div>

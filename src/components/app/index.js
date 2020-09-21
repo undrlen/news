@@ -10,6 +10,7 @@ import Footer from "../Footer";
 import ServerError from "../ServerError";
 import DateFormatContext from "../../contexts/DateFormatContext";
 import NewsApi from "../../services/NewsApi";
+import TwitterApiEmulation from "../../services/TwitterApiEmulation";
 import "owl.carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
@@ -33,6 +34,7 @@ export default class App extends Component {
     eightRandomElementsForFooter: null,
     eightRandomElementsForAside: null,
     dataForComparison: null,
+    tweets: null
   };
 
   findPhoto = (state) => {
@@ -94,6 +96,9 @@ export default class App extends Component {
   };
 
   onChangeHeaderNav = async (header) => {
+
+    const tweets = await TwitterApiEmulation();
+
     const country = header
       ? this.services.headersApp.get(header).slice(-2).toLowerCase()
       : this.services.country;
@@ -138,7 +143,8 @@ export default class App extends Component {
         mainAsideMostReadArticle,
         postsAllMainArticles,
         postsOneMainArticles,
-        dataForComparison
+        dataForComparison,
+        tweets
       });
     } catch (e) {
       this.setState({ isError: true });
@@ -205,7 +211,8 @@ export default class App extends Component {
       owlGeneral,
       eightRandomElementsForAside,
       eightRandomElementsForFooter,
-      dataForComparison
+      dataForComparison,
+      tweets
     } = this.state;
 
     if (isError) {
@@ -240,9 +247,10 @@ export default class App extends Component {
             loadPage={this.loadPage}
             country={country}
             eightRandomElements={eightRandomElementsForAside}
+            tweets={tweets}
           />
 
-          <Footer eightRandomElements={eightRandomElementsForFooter} footerFeaturedPosts={owlGeneral} />
+          <Footer eightRandomElements={eightRandomElementsForFooter} footerFeaturedPosts={owlGeneral} tweets={tweets} />
 
           <div id="back-to-top"></div>
         </div>

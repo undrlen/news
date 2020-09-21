@@ -1,6 +1,8 @@
 import React from "react";
 
-const PostsAsideTweets = (props) => {
+const PostsAsideTweets = ({tweets}) => {
+  // console.log(tweets[repos]);
+  const {repos} = tweets;
   return (
     <div className="widget tweets-widget">
       <div className="widget-title">

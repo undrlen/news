@@ -1,10 +1,11 @@
 import React from "react";
 
-import OwlCarousel4 from '../OwlCarousel4';
-import PostsAsidePhoto from '../PostsAsidePhoto';
-import PostsAsideTweets from '../PostsAsideTweets';
+import OwlCarousel4 from "../OwlCarousel4";
+import PostsAsidePhoto from "../PostsAsidePhoto";
+import PostsAsideTweets from "../PostsAsideTweets";
 
 const PostsAside = ({ country, eightRandomElements, tweets }) => {
+  const asideTweets = tweets ? <PostsAsideTweets tweets={tweets} /> : null;
   return (
     <div className="col-md-4">
       <div className="widget">
@@ -17,7 +18,7 @@ const PostsAside = ({ country, eightRandomElements, tweets }) => {
 
       <PostsAsidePhoto eightRandomElements={eightRandomElements} />
 
-      <PostsAsideTweets tweets={tweets} />
+      {asideTweets}
     </div>
   );
 };

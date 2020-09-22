@@ -4,6 +4,7 @@ const FooterTweet = ({tweets}) => {
   if (tweets) {
     var [firstTweet] = tweets.repos;
     var {link, name, tweet} = firstTweet;
+    var shortTweet = tweet.slice(0, tweet.match(/pic.twitter.com/).index);
     var linkAuthor = `https://www.twitter.com/${name.slice(1)}`;
   }
   return (
@@ -16,7 +17,7 @@ const FooterTweet = ({tweets}) => {
           <i className="fa fa-twitter"></i>
           <div className="tweet-body">
             <p>
-              <a href={linkAuthor} target="_blank" rel="noopener noreferrer">{name}</a> {tweet} <br />
+              <a href={linkAuthor} target="_blank" rel="noopener noreferrer">{name}</a> {shortTweet} <br />
               <a href={link} target="_blank" rel="noopener noreferrer">{link}</a>
             </p>
           </div>

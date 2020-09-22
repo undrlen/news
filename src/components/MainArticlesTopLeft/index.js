@@ -44,8 +44,9 @@ const MainArticlesTopLeft = ({ mainArticlesLeft }) => {
     const article = articles.slice(-2).map((art, i) => {
       let { title, urlToImage, description, publishedAt, url } = art;
       urlToImage = urlToImage ? urlToImage : noPhoto;
+      const key = i + Math.floor(Math.random() * 100000);
       return (
-        <article className="article widget-article" key={i + 1}>
+        <article className="article widget-article" key={key}>
           <div className="article-img">
             <a target="_blank" rel="noopener noreferrer" href={url}>
               <img src={urlToImage} alt={description} onError={(e) => { e.target.src = noPhoto }} />

@@ -158,7 +158,7 @@ checkBrowsers(paths.appPath, isInteractive)
       process.stdin.resume();
     }
 
-    // Twitter Emulation
+    // Twitter Api Emulation
     if (process.argv[2] === "twitter") {
       const { request } = require("https");
       const { createWriteStream } = require("fs");
@@ -178,10 +178,7 @@ checkBrowsers(paths.appPath, isInteractive)
           // console.log("Server: ", response.statusCode, response.headers.location);
           let stream = createWriteStream("public/temp.html");
           response.on("data", (chunk) => {
-            stream.write(chunk.toString(), (err) => {
-              if (err) console.log(err);
-              else console.log("file записан");
-            });
+            stream.write(chunk.toString());
           });
         }
       );

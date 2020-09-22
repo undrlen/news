@@ -6,7 +6,7 @@ const PostsAsideTweets = ({ tweets }) => {
     return tweets.repos.map((el, i) => {
       const { name, link, tweet } = el;
       const linkAuthor = `https://www.twitter.com/${name.slice(1)}`;
-      var shortTweet = tweet.slice(0, tweet.match(/pic.twitter.com/).index);
+      const shortTweet = tweet.lastIndexOf("pic.twitter.com") ? tweet.slice(0, tweet.lastIndexOf("pic.twitter.com")) : tweet;
       const key = i + Math.floor(Math.random() * 100000);
       return (
         <li className="tweet" key={key}>

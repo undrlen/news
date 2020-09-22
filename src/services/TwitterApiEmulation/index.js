@@ -10,7 +10,7 @@ const TwitterApiEmulation = () => {
           name: text(".user-info .username"),
           tweet: text(".tweet-text"),
           link: attr('.tweet-text a[href^="https://t.co/"]', "href"),
-        }).slice(0, 3),
+        }).slice(0, 16),
       });
     })
     .catch(() => {

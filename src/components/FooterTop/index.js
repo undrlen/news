@@ -5,6 +5,7 @@ import FooterTopFeaturedPosts from "../FooterTopFeaturedPosts";
 import FooterTweet from "../FooterTweet";
 
 const FooterTop = ({ eightRandomElements, footerFeaturedPosts, tweets }) => {
+  const footerTweet = tweets ? <FooterTweet tweets={tweets} /> : null;
   return (
     <div id="top-footer" className="section">
       <div className="container">
@@ -80,8 +81,8 @@ const FooterTop = ({ eightRandomElements, footerFeaturedPosts, tweets }) => {
 
           <div className="col-md-4">
             <PostsAsidePhoto eightRandomElements={eightRandomElements} />
-
-            <FooterTweet tweets={tweets} />
+            {footerTweet}
+            
           </div>
         </div>
       </div>

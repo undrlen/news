@@ -1,12 +1,11 @@
 import React from "react";
 
-const FooterTweet = ({tweets}) => {
-  if (tweets) {
-    var [firstTweet] = tweets.repos;
-    var {link, name, tweet} = firstTweet;
-    var shortTweet = tweet.slice(0, tweet.match(/pic.twitter.com/).index);
-    var linkAuthor = `https://www.twitter.com/${name.slice(1)}`;
-  }
+const FooterTweet = ({ tweets }) => {
+  const [firstTweet] = tweets.repos;
+  const { link, name, tweet } = firstTweet;
+  const shortTweet = tweet.lastIndexOf("pic.twitter.com") ? tweet.slice(0, tweet.lastIndexOf("pic.twitter.com")) : tweet;
+  const linkAuthor = `https://www.twitter.com/${name.slice(1)}`;
+
   return (
     <div className="footer-widget tweets-widget">
       <div className="widget-title">

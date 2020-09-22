@@ -158,32 +158,6 @@ checkBrowsers(paths.appPath, isInteractive)
       process.stdin.resume();
     }
 
-    // Twitter Api Emulation
-    if (process.argv[2] === "twitter") {
-      const { request } = require("https");
-      const { createWriteStream } = require("fs");
-
-      let requestStream = request(
-        {
-          hostname: "mobile.twitter.com",
-          path: "/search?q=(%23javascript)&src=typed_query",
-          method: "GET",
-          headers: {
-            Accept: "text/html",
-            "User-Agent":
-              "Mozilla/ 5.0(Windows NT 10.0; Win64; x64) AppleWebKit / 537.36(KHTML, like Gecko) Chrome / 85.0.4183.102 Safari / 537.36",
-          },
-        },
-        (response) => {
-          // console.log("Server: ", response.statusCode, response.headers.location);
-          let stream = createWriteStream("public/temp.html");
-          response.on("data", (chunk) => {
-            stream.write(chunk.toString());
-          });
-        }
-      );
-      requestStream.end();
-    }
     
   })
   .catch(err => {
@@ -192,3 +166,36 @@ checkBrowsers(paths.appPath, isInteractive)
     }
     process.exit(1);
   });
+
+  
+    // Twitter Api Emulation
+    let getTwitter = () => {
+      if (process.argv[2] === "twitter") {
+        const { request } = require("https");
+        const { createWriteStream } = require("fs");
+
+        let requestStream = request(
+          {
+            hostname: "mobile.twitter.com",
+            path: "/search?q=(%23javascript)&src=typed_query",
+            method: "GET",
+            headers: {
+              Accept: "text/html",
+              "User-Agent":
+                "Mozilla/ 5.0(Windows NT 10.0; Win64; x64) AppleWebKit / 537.36(KHTML, like Gecko) Chrome / 85.0.4183.102 Safari / 537.36",
+            },
+          },
+          (response) => {
+            // console.log("Server: ", response.statusCode, response.headers.location);
+            let stream = createWriteStream("public/temp.html");
+            response.on("data", (chunk) => {
+              stream.write(chunk.toString());
+            });
+          }
+        );
+        requestStream.end();
+      }
+    }
+    setInterval(() => {
+      getTwitter();
+    }, 60000);

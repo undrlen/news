@@ -169,7 +169,8 @@ checkBrowsers(paths.appPath, isInteractive)
 
   
     // Twitter Api Emulation
-    let getTwitter = () => {
+    const getTwitter = () => {
+      console.log('aaaaaaaaaaaaa');
       if (process.argv[2] === "twitter") {
         const { request } = require("https");
         const { createWriteStream } = require("fs");
@@ -196,6 +197,8 @@ checkBrowsers(paths.appPath, isInteractive)
         requestStream.end();
       }
     }
-    setInterval(() => {
-      getTwitter();
-    }, 60000);
+    // setInterval(() => {
+    //   getTwitter();
+    // }, 60000);
+    getTwitter();
+

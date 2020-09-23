@@ -3,7 +3,14 @@ import React from "react";
 const PostsAsideTweets = ({ tweets }) => {
 
   function elements(tweets) {
-    return tweets.repos.map((el, i) => {
+    const randomArray = new Set();
+    for (let i = 0; i < tweets.repos.length; i++) {
+      let y = Math.floor(Math.random() * (tweets.repos.length + 1));
+      console.log(y);
+      randomArray.add(tweets.repos[Math.floor(Math.random() * (tweets.repos.length + 1))]);
+      if (randomArray.size === 3) break;
+    }
+    return [...randomArray].map((el, i) => {
       const { name, link, tweet } = el;
       const linkAuthor = `https://www.twitter.com/${name.slice(1)}`;
       const shortTweet = tweet.lastIndexOf("pic.twitter.com") ? tweet.slice(0, tweet.lastIndexOf("pic.twitter.com")) : tweet;

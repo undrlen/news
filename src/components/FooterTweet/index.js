@@ -2,7 +2,8 @@ import React from "react";
 
 const FooterTweet = ({ tweets }) => {
   const [firstTweet] = tweets.repos;
-  const { link, name, tweet } = firstTweet;
+  let { link, name, tweet } = firstTweet;
+  if (Array.isArray(link)) link = link[link.length - 1];
   const shortTweet = tweet.lastIndexOf("pic.twitter.com") ? tweet.slice(0, tweet.lastIndexOf("pic.twitter.com")) : tweet;
   const linkAuthor = `https://www.twitter.com/${name.slice(1)}`;
 
